@@ -1,0 +1,7 @@
+{
+  "name": "IonicMap",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

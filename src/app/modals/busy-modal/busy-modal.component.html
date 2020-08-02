@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="text-black-50 bold">
+            <ion-icon name="navigate"></ion-icon> Información acerca de {{datos.nombreLugar}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-icon name="close-circle"></ion-icon>
+            <ion-button (click)="dismissModal()">Cerrar</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+    <div class="ion-padding-bottom">
+        <h4>Lugar: {{datos.nombreLugar}}</h4>
+        <h4>
+            <ion-icon name="location"></ion-icon> Dirección del lugar: {{datos.direccionLugar}}
+        </h4>
+    </div>
+    <div class="busy-hours">
+        <ion-label>
+            <h4>Información del día</h4>
+            <p>Día: {{datos.busyInfo.analysis.day_info.day_text}}</p>
+            <p>Hora de apertura: {{datos.busyInfo.analysis.day_info.venue_open}}:00</p>
+            <p>Hora de cierre: {{datos.busyInfo.analysis.day_info.venue_closed}}:00</p>
+        </ion-label>
+        <ion-item *ngFor="let busy of datos.busyInfo.analysis.busy_hours">
+            <ion-label>
+                <p>Horas más concurridas entre <b><i>{{busy.busy_start_12}} y {{busy.busy_end_12}}</i></b></p>
+                <p>Usted debería considerar visitar este lugar fuera de estas horas</p>
+            </ion-label>
+        </ion-item>
+        <ion-label *ngIf="datos.busyInfo.analysis.busy_hours == ''">
+            <p>No se tiene información acerca de este establecimiento en este día</p>
+        </ion-label>
+    </div>
+</ion-content>
